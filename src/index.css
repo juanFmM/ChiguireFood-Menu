@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+/* ── Keyframes ─────────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(240,180,41,0.35)); }
+  50%       { filter: drop-shadow(0 0 22px rgba(240,180,41,0.7)); }
+}
+@keyframes badgePop {
+  0%   { transform: scale(0.7); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+body {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  background-color: #0b0804;
+  color: #f5ead8;
+  margin: 0;
+}
+#root { min-height: 100vh; }
+
+/* Grain texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+.font-display {
+  font-family: 'Fredoka One', 'Arial Rounded MT Bold', sans-serif;
+}
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.label-caps {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6b5a3e;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #141008; }
+::-webkit-scrollbar-thumb { background: #f0b429; border-radius: 4px; }
+
+/* ── Animations ────────────────────────────────────────────────────────────── */
+.anim-fade-up  { animation: fadeUp  0.5s cubic-bezier(.22,.68,0,1.2) both; }
+.anim-fade-in  { animation: fadeIn  0.35s ease both; }
+.anim-scale-in { animation: scaleIn 0.32s cubic-bezier(.22,.68,0,1.2) both; }
+
+.delay-0 { animation-delay: 0ms; }
+.delay-1 { animation-delay: 70ms; }
+.delay-2 { animation-delay: 140ms; }
+.delay-3 { animation-delay: 210ms; }
+.delay-4 { animation-delay: 280ms; }
+.delay-5 { animation-delay: 350ms; }
+
+/* ── Logo ──────────────────────────────────────────────────────────────────── */
+.logo-float { animation: logoFloat 3.5s ease-in-out infinite; }
+.logo-glow  { animation: glowPulse 3s ease-in-out infinite; }
+
+/* ── Menu card ─────────────────────────────────────────────────────────────── */
+.menu-card {
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2),
+              box-shadow 0.3s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+.menu-card:hover {
+  transform: translateY(-6px) rotate(0.3deg);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.6), 0 0 0 1px rgba(240,180,41,0.25);
+  border-color: rgba(240,180,41,0.3);
+}
+
+/* ── Category nav ──────────────────────────────────────────────────────────── */
+.cat-pill {
+  position: relative;
+  transition: color 0.2s ease;
+  border: none !important;
+  background: transparent !important;
+  padding-bottom: 0.75rem;
+}
+.cat-pill::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f0b429, #e07b39);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  transform-origin: center;
+}
+.cat-pill:hover { color: #f5ead8 !important; }
+.cat-pill.active { color: #f0b429 !important; animation: none; }
+.cat-pill.active::after { transform: scaleX(1); }
+
+/* ── Badge pop ─────────────────────────────────────────────────────────────── */
+.badge-pop { animation: badgePop 0.4s cubic-bezier(.22,.68,0,1.2) both; }
+
+/* ── Price tag ─────────────────────────────────────────────────────────────── */
+.price-tag {
+  font-family: 'Fredoka One', sans-serif;
+  background: linear-gradient(135deg, #f0b429, #e07b39);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section divider ───────────────────────────────────────────────────────── */
+.section-line {
+  background: linear-gradient(90deg, transparent, #2a2010 40%, #2a2010 60%, transparent);
+}
+
+/* ── Spinner ───────────────────────────────────────────────────────────────── */
+.spinner {
+  width: 28px; height: 28px;
+  border: 2.5px solid #2a2010;
+  border-top-color: #f0b429;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Note banner ───────────────────────────────────────────────────────────── */
+.note-banner {
+  background: linear-gradient(135deg, rgba(240,180,41,0.08), rgba(224,123,57,0.05));
+  border: 1px solid rgba(240,180,41,0.15);
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80">
+  <!-- Capybara silhouette simplified -->
+  <g transform="translate(10,10)">
+    <!-- body -->
+    <ellipse cx="30" cy="42" rx="28" ry="18" fill="#f0b429" opacity="0.9"/>
+    <!-- head -->
+    <ellipse cx="52" cy="32" rx="16" ry="13" fill="#f0b429" opacity="0.9"/>
+    <!-- ear -->
+    <ellipse cx="44" cy="21" rx="5" ry="4" fill="#d4950f"/>
+    <!-- eye -->
+    <circle cx="57" cy="28" r="2.5" fill="#0b0804"/>
+    <circle cx="58" cy="27" r="0.8" fill="#fff" opacity="0.7"/>
+    <!-- nose -->
+    <ellipse cx="64" cy="33" rx="5" ry="3.5" fill="#c4830a"/>
+    <!-- nostrils -->
+    <circle cx="62" cy="33" r="1" fill="#0b0804" opacity="0.5"/>
+    <circle cx="65" cy="33" r="1" fill="#0b0804" opacity="0.5"/>
+    <!-- legs -->
+    <rect x="14" y="56" width="8" height="10" rx="3" fill="#d4950f"/>
+    <rect x="26" y="56" width="8" height="10" rx="3" fill="#d4950f"/>
+    <rect x="36" y="56" width="8" height="10" rx="3" fill="#d4950f"/>
+    <rect x="46" y="56" width="8" height="10" rx="3" fill="#d4950f"/>
+  </g>
+  <!-- Brand name -->
+  <text x="90" y="46" font-family="'Georgia', serif" font-style="italic" font-size="38" font-weight="700" fill="#f0b429" letter-spacing="1">Chiguire</text>
+  <text x="91" y="68" font-family="'Georgia', serif" font-style="italic" font-size="22" fill="#e07b39" letter-spacing="3">food</text>
+</svg>
