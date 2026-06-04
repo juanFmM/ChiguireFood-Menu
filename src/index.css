@@ -1,9 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+
+/*
+  ChiguireFood — Tema "Rustic Artesanal"
+  Elegancia natural y honesta. Tonos tierra/espresso, dorado mostaza
+  del logo (#e8c000), tipografía serif, texturas de papel artesanal.
+  Sin neón, sin glow: sombras cálidas y mate.
+*/
 
 /* ── Keyframes ─────────────────────────────────────────────────────────────── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
@@ -11,104 +18,128 @@
   to   { opacity: 1; }
 }
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.93); }
+  from { opacity: 0; transform: scale(0.95); }
   to   { opacity: 1; transform: scale(1); }
-}
-@keyframes shimmer {
-  0%   { background-position: -400px 0; }
-  100% { background-position:  400px 0; }
 }
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-@keyframes logoFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-6px); }
-}
-@keyframes glowPulse {
-  0%, 100% { filter: drop-shadow(0 0 8px rgba(240,180,41,0.35)); }
-  50%       { filter: drop-shadow(0 0 22px rgba(240,180,41,0.7)); }
-}
-@keyframes badgePop {
-  0%   { transform: scale(0.7); opacity: 0; }
-  70%  { transform: scale(1.1); }
-  100% { transform: scale(1); opacity: 1; }
+@keyframes softRise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Base ──────────────────────────────────────────────────────────────────── */
+:root {
+  --bg:        #17120c;
+  --surface:   #1f1810;
+  --surface-2: #261d12;
+  --border:    #3a2c1a;
+  --gold:      #d9a818;
+  --gold-soft: #c9991a;
+  --gold-bright: #e8c000;
+  --clay:      #b5702e;
+  --cream:     #f2e8d5;
+  --tan:       #c2ad8a;
+  --muted:     #8a7656;
+  --faint:     #5a4a32;
+}
+
 body {
   font-family: 'Nunito', 'Segoe UI', sans-serif;
-  background-color: #0b0804;
-  color: #f5ead8;
+  background-color: var(--bg);
+  color: var(--cream);
   margin: 0;
 }
 #root { min-height: 100vh; }
 
-/* Grain texture */
+/* Paper / linen grain overlay */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 180px 180px;
+  background-size: 200px 200px;
 }
 
+/* ── Typography ────────────────────────────────────────────────────────────── */
 .font-display {
-  font-family: 'Fredoka One', 'Arial Rounded MT Bold', sans-serif;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
 }
 .font-serif {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
 }
 
 .label-caps {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #6b5a3e;
+  color: var(--muted);
 }
 
 /* ── Scrollbar ─────────────────────────────────────────────────────────────── */
-::-webkit-scrollbar       { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: #141008; }
-::-webkit-scrollbar-thumb { background: #f0b429; border-radius: 4px; }
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #1a140d; }
+::-webkit-scrollbar-thumb { background: var(--gold-soft); border-radius: 4px; }
 
 /* ── Animations ────────────────────────────────────────────────────────────── */
-.anim-fade-up  { animation: fadeUp  0.5s cubic-bezier(.22,.68,0,1.2) both; }
-.anim-fade-in  { animation: fadeIn  0.35s ease both; }
-.anim-scale-in { animation: scaleIn 0.32s cubic-bezier(.22,.68,0,1.2) both; }
+.anim-fade-up  { animation: fadeUp  0.55s cubic-bezier(.22,.61,.36,1) both; }
+.anim-fade-in  { animation: fadeIn  0.4s ease both; }
+.anim-scale-in { animation: scaleIn 0.45s cubic-bezier(.22,.61,.36,1) both; }
 
 .delay-0 { animation-delay: 0ms; }
-.delay-1 { animation-delay: 70ms; }
-.delay-2 { animation-delay: 140ms; }
-.delay-3 { animation-delay: 210ms; }
-.delay-4 { animation-delay: 280ms; }
-.delay-5 { animation-delay: 350ms; }
+.delay-1 { animation-delay: 80ms; }
+.delay-2 { animation-delay: 160ms; }
+.delay-3 { animation-delay: 240ms; }
+.delay-4 { animation-delay: 320ms; }
+.delay-5 { animation-delay: 400ms; }
 
-/* ── Logo ──────────────────────────────────────────────────────────────────── */
-.logo-float { animation: logoFloat 3.5s ease-in-out infinite; }
-.logo-glow  { animation: glowPulse 3s ease-in-out infinite; }
+/* ── Logo (mate, sin glow neón) ────────────────────────────────────────────── */
+.logo-img {
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));
+}
 
-/* ── Menu card ─────────────────────────────────────────────────────────────── */
+/* ── Menu card — estilo artesanal ──────────────────────────────────────────── */
 .menu-card {
-  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2),
-              box-shadow 0.3s ease, border-color 0.25s ease;
-  will-change: transform;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.35s cubic-bezier(.22,.61,.36,1),
+              box-shadow 0.35s ease, border-color 0.3s ease;
 }
 .menu-card:hover {
-  transform: translateY(-6px) rotate(0.3deg);
-  box-shadow: 0 18px 44px rgba(0,0,0,0.6), 0 0 0 1px rgba(240,180,41,0.25);
-  border-color: rgba(240,180,41,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+  border-color: rgba(217,168,24,0.4);
+}
+.menu-card:hover .card-img img {
+  transform: scale(1.05);
+}
+
+.card-img {
+  position: relative;
+  overflow: hidden;
+}
+.card-img img {
+  transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
+}
+.card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(23,18,12,0.85) 0%, rgba(23,18,12,0.1) 45%, transparent 70%);
+  pointer-events: none;
 }
 
 /* ── Category nav ──────────────────────────────────────────────────────────── */
 .cat-pill {
   position: relative;
-  transition: color 0.2s ease;
+  transition: color 0.25s ease;
   border: none !important;
   background: transparent !important;
   padding-bottom: 0.75rem;
@@ -116,46 +147,47 @@ body::before {
 .cat-pill::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0; left: 50%; right: 50%;
   height: 2px;
-  background: linear-gradient(90deg, #f0b429, #e07b39);
-  border-radius: 2px;
-  transform: scaleX(0);
-  transition: transform 0.25s ease;
-  transform-origin: center;
+  background: var(--gold);
+  transition: left 0.28s ease, right 0.28s ease;
 }
-.cat-pill:hover { color: #f5ead8 !important; }
-.cat-pill.active { color: #f0b429 !important; animation: none; }
-.cat-pill.active::after { transform: scaleX(1); }
+.cat-pill.active::after { left: 0; right: 0; }
+.cat-pill.active { color: var(--gold) !important; }
 
-/* ── Badge pop ─────────────────────────────────────────────────────────────── */
-.badge-pop { animation: badgePop 0.4s cubic-bezier(.22,.68,0,1.2) both; }
-
-/* ── Price tag ─────────────────────────────────────────────────────────────── */
-.price-tag {
-  font-family: 'Fredoka One', sans-serif;
-  background: linear-gradient(135deg, #f0b429, #e07b39);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── Badge ─────────────────────────────────────────────────────────────────── */
+.badge-soft {
+  animation: softRise 0.5s cubic-bezier(.22,.61,.36,1) both;
 }
 
-/* ── Section divider ───────────────────────────────────────────────────────── */
+/* ── Section divider (hairline dorado) ─────────────────────────────────────── */
 .section-line {
-  background: linear-gradient(90deg, transparent, #2a2010 40%, #2a2010 60%, transparent);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+}
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(217,168,24,0.5), transparent);
+}
+
+/* ── Price ─────────────────────────────────────────────────────────────────── */
+.price-tag {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--gold-bright);
 }
 
 /* ── Spinner ───────────────────────────────────────────────────────────────── */
 .spinner {
   width: 28px; height: 28px;
   border: 2.5px solid #2a2010;
-  border-top-color: #f0b429;
+  border-top-color: var(--gold);
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 /* ── Note banner ───────────────────────────────────────────────────────────── */
 .note-banner {
-  background: linear-gradient(135deg, rgba(240,180,41,0.08), rgba(224,123,57,0.05));
-  border: 1px solid rgba(240,180,41,0.15);
+  background: linear-gradient(135deg, rgba(217,168,24,0.07), rgba(181,112,46,0.05));
+  border: 1px solid rgba(217,168,24,0.18);
 }

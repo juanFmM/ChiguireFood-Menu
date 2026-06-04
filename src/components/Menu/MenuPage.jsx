@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import CategoryNav from './CategoryNav'
 import MenuSection  from './MenuSection'
 
@@ -7,57 +6,41 @@ export default function MenuPage({ categories, items }) {
     items.some((item) => item.categoryId === cat.id)
   )
 
-  const heroRef = useRef(null)
-  useEffect(() => {
-    const onScroll = () => {
-      if (heroRef.current)
-        heroRef.current.style.transform = `translateY(${window.scrollY * 0.18}px)`
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
-    <div className="min-h-screen bg-[#0b0804]">
+    <div className="min-h-screen bg-[#17120c]">
 
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
-      <header className="relative overflow-hidden pt-14 pb-12">
-        {/* Warm radial glow */}
+      <header className="relative overflow-hidden pt-16 pb-12">
+        {/* Warm earthy wash (mate, sin neón) */}
         <div
-          ref={heroRef}
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(240,180,41,0.12) 0%, rgba(224,123,57,0.06) 40%, transparent 70%)',
-          }}
-        />
-        {/* Subtle dot grid */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.025]"
-          style={{
-            backgroundImage: 'radial-gradient(circle, #f0b429 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
+              'radial-gradient(ellipse 75% 55% at 50% 0%, rgba(217,168,24,0.07) 0%, transparent 65%)',
           }}
         />
 
         <div className="relative max-w-5xl mx-auto px-4 text-center">
-          {/* Logo */}
-          <div className="anim-scale-in delay-0 flex justify-center mb-5">
+          {/* Logo real */}
+          <div className="anim-scale-in flex justify-center mb-6">
             <img
-              src="/logo.svg"
-              alt="ChiguireFood"
-              className="logo-float logo-glow h-24 sm:h-32 w-auto"
+              src="/img/logo.png"
+              alt="ChiguireFood — Comida Venezolana"
+              className="logo-img h-36 sm:h-44 w-auto"
             />
           </div>
 
-          {/* Divider line */}
+          {/* Divider artesanal */}
           <div className="anim-fade-in delay-2 flex items-center justify-center gap-4 mb-3">
-            <span className="flex-shrink-0 w-14 h-px bg-gradient-to-r from-transparent to-[#f0b429]/40" />
-            <span className="label-caps tracking-[0.2em] text-[#6b5a3e]">@chiguirefoodrd</span>
-            <span className="flex-shrink-0 w-14 h-px bg-gradient-to-l from-transparent to-[#f0b429]/40" />
+            <span className="flex-shrink-0 w-16 gold-rule" />
+            <span className="label-caps">@chiguirefoodrd</span>
+            <span className="flex-shrink-0 w-16 gold-rule" />
           </div>
 
-          <p className="anim-fade-in delay-3 label-caps" style={{ color: '#3d3018' }}>
+          <p className="anim-fade-in delay-3 font-serif italic text-lg text-[#8a7656]">
+            Sabor venezolano, hecho con honestidad
+          </p>
+          <p className="anim-fade-in delay-3 label-caps mt-3 text-[#5a4a32]">
             10% de servicio no incluido
           </p>
         </div>
@@ -68,12 +51,13 @@ export default function MenuPage({ categories, items }) {
 
       {/* ── Menu ───────────────────────────────────────────────────────────── */}
       <main className="max-w-5xl mx-auto px-4 py-14">
-        {/* Lunes y Miércoles special banner */}
-        <div className="note-banner anim-fade-in delay-1 rounded-xl px-5 py-3 mb-10 flex items-center gap-3">
-          <i className="fa-solid fa-calendar-days text-[#f0b429] text-lg" />
-          <p className="text-sm font-semibold text-[#f0b429]">
-            Bandeja Mixta disponible <span className="text-[#e07b39]">lunes y miércoles</span>{' '}
-            <span className="text-[#6b5a3e] font-normal">· Precio especial $1400</span>
+        {/* Banner especial */}
+        <div className="note-banner anim-fade-in delay-1 rounded-lg px-5 py-3.5 mb-12 flex items-center gap-3">
+          <i className="fa-solid fa-calendar-days text-[#d9a818] text-lg" />
+          <p className="text-sm text-[#c2ad8a]">
+            <span className="font-semibold text-[#e8c000]">Bandeja Mixta</span> disponible{' '}
+            <span className="text-[#b5702e] font-semibold">lunes y miércoles</span>{' '}
+            <span className="text-[#8a7656]">· precio especial $1400</span>
           </p>
         </div>
 
@@ -87,16 +71,17 @@ export default function MenuPage({ categories, items }) {
       </main>
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
-      <footer className="text-center py-10 border-t border-[#1a1508]">
-        <div className="flex items-center justify-center gap-4 mb-3">
-          <span className="w-8 h-px bg-[#2a2010]" />
-          <img src="/logo.svg" alt="" className="h-8 w-auto opacity-15" />
-          <span className="w-8 h-px bg-[#2a2010]" />
+      <footer className="text-center py-12 border-t border-[#251c11]">
+        <img src="/img/logo.png" alt="" className="h-16 w-auto mx-auto opacity-25 mb-4" />
+        <div className="flex items-center justify-center gap-3 mb-3">
+          <span className="w-10 gold-rule" />
+          <i className="fa-solid fa-utensils text-[#5a4a32] text-xs" />
+          <span className="w-10 gold-rule" />
         </div>
-        <p className="label-caps" style={{ color: '#2a2010' }}>
-          © ChiguireFood · Todos los derechos reservados
+        <p className="label-caps text-[#5a4a32]">
+          © ChiguireFood · Comida Venezolana
         </p>
-        <p className="label-caps mt-1" style={{ color: '#2a2010' }}>
+        <p className="label-caps mt-1 text-[#3a2e1c]">
           10% de servicio no incluido
         </p>
       </footer>
