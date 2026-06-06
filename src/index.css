@@ -31,18 +31,18 @@
 
 /* ── Base ──────────────────────────────────────────────────────────────────── */
 :root {
-  --bg:        #17120c;
-  --surface:   #1f1810;
-  --surface-2: #261d12;
-  --border:    #3a2c1a;
-  --gold:      #d9a818;
-  --gold-soft: #c9991a;
-  --gold-bright: #e8c000;
-  --clay:      #b5702e;
-  --cream:     #f2e8d5;
-  --tan:       #c2ad8a;
-  --muted:     #8a7656;
-  --faint:     #5a4a32;
+  --bg:        #000000;
+  --surface:   #0e0e0e;
+  --surface-2: #161616;
+  --border:    #242424;
+  --gold:      #e8c000;
+  --gold-soft: #e8c000;
+  --gold-bright: #ffd400;
+  --clay:      #e8c000;
+  --cream:     #f5f5f5;
+  --tan:       #c4c4c4;
+  --muted:     #8a8a8a;
+  --faint:     #4d4d4d;
 }
 
 body {
@@ -85,7 +85,7 @@ body::before {
 
 /* ── Scrollbar ─────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #1a140d; }
+::-webkit-scrollbar-track { background: #111111; }
 ::-webkit-scrollbar-thumb { background: var(--gold-soft); border-radius: 4px; }
 
 /* ── Animations ────────────────────────────────────────────────────────────── */
@@ -111,11 +111,15 @@ body::before {
   border: 1px solid var(--border);
   transition: transform 0.35s cubic-bezier(.22,.61,.36,1),
               box-shadow 0.35s ease, border-color 0.3s ease;
+  /* Fix Safari/iOS: fuerza un recorte correcto del border-radius
+     cuando hay hijos con transform (evita que la imagen desaparezca). */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 .menu-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.55);
-  border-color: rgba(217,168,24,0.4);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.7);
+  border-color: rgba(232,192,0,0.45);
 }
 .menu-card:hover .card-img img {
   transform: scale(1.05);
@@ -124,15 +128,26 @@ body::before {
 .card-img {
   position: relative;
   overflow: hidden;
+  /* Capa propia estable en iOS Safari */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  isolation: isolate;
 }
 .card-img img {
-  transition: transform 0.6s cubic-bezier(.22,.61,.36,1);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: -webkit-transform 0.6s cubic-bezier(.22,.61,.36,1),
+                      transform 0.6s cubic-bezier(.22,.61,.36,1);
 }
 .card-img::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(23,18,12,0.85) 0%, rgba(23,18,12,0.1) 45%, transparent 70%);
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.12) 45%, transparent 70%);
   pointer-events: none;
 }
 
@@ -167,7 +182,7 @@ body::before {
 }
 .gold-rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(217,168,24,0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(232,192,0,0.6), transparent);
 }
 
 /* ── Price ─────────────────────────────────────────────────────────────────── */
@@ -180,7 +195,7 @@ body::before {
 /* ── Spinner ───────────────────────────────────────────────────────────────── */
 .spinner {
   width: 28px; height: 28px;
-  border: 2.5px solid #2a2010;
+  border: 2.5px solid #242424;
   border-top-color: var(--gold);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -188,6 +203,6 @@ body::before {
 
 /* ── Note banner ───────────────────────────────────────────────────────────── */
 .note-banner {
-  background: linear-gradient(135deg, rgba(217,168,24,0.07), rgba(181,112,46,0.05));
-  border: 1px solid rgba(217,168,24,0.18);
+  background: linear-gradient(135deg, rgba(232,192,0,0.09), rgba(232,192,0,0.03));
+  border: 1px solid rgba(232,192,0,0.22);
 }

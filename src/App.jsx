@@ -4,7 +4,7 @@ import './index.css'
 
 function LoadingScreen() {
   return (
-    <div className="min-h-screen bg-[#17120c] flex items-center justify-center">
+    <div className="min-h-screen bg-black flex items-center justify-center">
       <div className="text-center">
         <img src="/img/logo.png" alt="ChiguireFood" className="h-24 w-auto mx-auto mb-6 opacity-50" />
         <div className="flex justify-center mb-3">

@@ -26,8 +26,8 @@ export default function CategoryNav({ categories }) {
 
   return (
     <nav
-      className="sticky top-0 z-20 border-b border-[#2a2010] py-0"
-      style={{ background: 'rgba(23,18,12,0.94)', backdropFilter: 'blur(18px)' }}
+      className="sticky top-0 z-20 border-b border-[#242424] py-0"
+      style={{ background: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)' }}
     >
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex gap-0 overflow-x-auto [&::-webkit-scrollbar]:hidden justify-start sm:justify-center">
@@ -37,7 +37,7 @@ export default function CategoryNav({ categories }) {
               onClick={() => scrollTo(cat.id)}
               style={{ animationDelay: `${i * 45}ms` }}
               className={`cat-pill anim-fade-in flex-shrink-0 px-4 py-4 text-xs font-semibold tracking-[0.16em] uppercase cursor-pointer transition-colors
-                ${active === cat.id ? 'active text-[#d9a818]' : 'text-[#6b5a3e] hover:text-[#f2e8d5]'}`}
+                ${active === cat.id ? 'active text-[#e8c000]' : 'text-[#777777] hover:text-[#f5f5f5]'}`}
             >
               <i className={`${cat.icon} mr-1.5 text-[0.7rem]`} />
               {cat.name}

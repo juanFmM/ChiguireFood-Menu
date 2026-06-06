@@ -10,9 +10,9 @@ export default function MenuSection({ category, items }) {
         <div className="flex items-center gap-6">
           <div className="flex-1 section-line" />
           <div className="text-center">
-            <i className={`${category.icon} text-[1.5rem] text-[#d9a818] block mb-3`} />
+            <i className={`${category.icon} text-[1.5rem] text-[#e8c000] block mb-3`} />
             <p className="label-caps mb-1.5">{category.description}</p>
-            <h2 className="font-display text-3xl sm:text-[2.4rem] text-[#f2e8d5] leading-tight">
+            <h2 className="font-display text-3xl sm:text-[2.4rem] text-[#f5f5f5] leading-tight">
               {category.name}
             </h2>
           </div>

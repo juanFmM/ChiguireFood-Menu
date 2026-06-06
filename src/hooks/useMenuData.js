@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { initialCategories, initialItems } from '../data/initialMenu'
+import { initialCategories, initialItems, MENU_VERSION } from '../data/initialMenu'
 
 const STORAGE_KEY = 'chiguirefood_menu'
 
@@ -7,14 +7,21 @@ function loadFromStorage() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (!raw) return null
-    return JSON.parse(raw)
+    const data = JSON.parse(raw)
+    // Si la versión guardada es distinta a la actual, descartamos la copia
+    // vieja para que los cambios de precios/platos se reflejen.
+    if (data.version !== MENU_VERSION) return null
+    return data
   } catch {
     return null
   }
 }
 
 function saveToStorage(categories, items) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ categories, items }))
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({ version: MENU_VERSION, categories, items })
+  )
 }
 
 export function useMenuData() {
