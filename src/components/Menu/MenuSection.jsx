@@ -5,20 +5,26 @@ export default function MenuSection({ category, items }) {
 
   return (
     <section id={`cat-${category.id}`} className="scroll-mt-16 mb-20">
-      {/* Header */}
+
+      {/* ── Header ───────────────────────────────────────────────────────── */}
       <div className="anim-fade-in mb-9">
         <div className="flex items-center gap-6">
           <div className="flex-1 section-line" />
           <div className="text-center">
-            <i className={`${category.icon} text-[1.5rem] text-[#e8c000] block mb-3`} />
-            <p className="label-caps mb-1.5">{category.description}</p>
-            <h2 className="font-display text-3xl sm:text-[2.4rem] text-[#f5f5f5] leading-tight">
+            <i
+              className={`${category.icon} text-[1.4rem] block mb-2.5`}
+              style={{ color: 'var(--gold)' }}
+            />
+            <p className="label-caps mb-1.5" style={{ color: 'var(--muted)' }}>
+              {category.description}
+            </p>
+            <h2 className="font-display text-3xl sm:text-[2.4rem] leading-tight" style={{ color: 'var(--cream)' }}>
               {category.name}
             </h2>
           </div>
           <div className="flex-1 section-line" />
         </div>
-        {/* Accent */}
+        {/* Hairline dorado */}
         <div className="flex justify-center mt-4">
           <span className="w-12 gold-rule" />
         </div>

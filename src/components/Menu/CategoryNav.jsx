@@ -26,8 +26,13 @@ export default function CategoryNav({ categories }) {
 
   return (
     <nav
-      className="sticky top-0 z-20 border-b border-[#242424] py-0"
-      style={{ background: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)' }}
+      className="sticky top-0 z-20 py-0"
+      style={{
+        backgroundColor: 'color-mix(in srgb, var(--bg) 90%, transparent)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: '1px solid var(--border)',
+      }}
     >
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex gap-0 overflow-x-auto [&::-webkit-scrollbar]:hidden justify-start sm:justify-center">
@@ -35,11 +40,15 @@ export default function CategoryNav({ categories }) {
             <button
               key={cat.id}
               onClick={() => scrollTo(cat.id)}
-              style={{ animationDelay: `${i * 45}ms` }}
-              className={`cat-pill anim-fade-in flex-shrink-0 px-4 py-4 text-xs font-semibold tracking-[0.16em] uppercase cursor-pointer transition-colors
-                ${active === cat.id ? 'active text-[#e8c000]' : 'text-[#777777] hover:text-[#f5f5f5]'}`}
+              style={{
+                animationDelay: `${i * 45}ms`,
+                color: active === cat.id ? 'var(--gold)' : 'var(--muted)',
+              }}
+              className={`cat-pill anim-fade-in flex-shrink-0 px-5 py-5 text-[0.95rem] font-bold tracking-[0.14em] uppercase cursor-pointer transition-colors flex items-center gap-2 ${
+                active === cat.id ? 'active' : ''
+              }`}
             >
-              <i className={`${cat.icon} mr-1.5 text-[0.7rem]`} />
+              <i className={`${cat.icon} text-[0.9rem]`} />
               {cat.name}
             </button>
           ))}

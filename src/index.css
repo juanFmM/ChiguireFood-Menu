@@ -4,7 +4,7 @@
 /*
   ChiguireFood — Tema "Rustic Artesanal"
   Elegancia natural y honesta. Tonos tierra/espresso, dorado mostaza
-  del logo (#e8c000), tipografía serif, texturas de papel artesanal.
+  (#d9a818 / #e8c000), tipografía serif, texturas de papel artesanal.
   Sin neón, sin glow: sombras cálidas y mate.
 */
 
@@ -29,22 +29,23 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Base ──────────────────────────────────────────────────────────────────── */
+/* ── Variables — negro puro con acentos dorados ─────────────────────────────── */
 :root {
-  --bg:        #000000;
-  --surface:   #0e0e0e;
-  --surface-2: #161616;
-  --border:    #242424;
-  --gold:      #e8c000;
-  --gold-soft: #e8c000;
-  --gold-bright: #ffd400;
-  --clay:      #e8c000;
-  --cream:     #f5f5f5;
-  --tan:       #c4c4c4;
-  --muted:     #8a8a8a;
-  --faint:     #4d4d4d;
+  --bg:          #080808;   /* negro puro                            */
+  --surface:     #111111;   /* superficie oscura, sin tinte calido   */
+  --surface-2:   #191919;   /* segunda capa                          */
+  --border:      #262626;   /* borde gris muy oscuro                 */
+  --gold:        #d9a818;   /* dorado ámbar — único acento de color  */
+  --gold-soft:   #c9991a;
+  --gold-bright: #e8c000;   /* dorado brillante para precios y logo  */
+  --clay:        #c9991a;   /* unificado con gold-soft, sin tierra   */
+  --cream:       #f0f0f0;   /* blanco/gris claro puro                */
+  --tan:         #aaaaaa;   /* gris medio puro                       */
+  --muted:       #6a6a6a;   /* gris muted puro                       */
+  --faint:       #404040;   /* gris oscuro puro                      */
 }
 
+/* ── Base ──────────────────────────────────────────────────────────────────── */
 body {
   font-family: 'Nunito', 'Segoe UI', sans-serif;
   background-color: var(--bg);
@@ -76,7 +77,7 @@ body::before {
 }
 
 .label-caps {
-  font-size: 0.64rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -85,7 +86,7 @@ body::before {
 
 /* ── Scrollbar ─────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #111111; }
+::-webkit-scrollbar-track { background: #0d0d0d; }
 ::-webkit-scrollbar-thumb { background: var(--gold-soft); border-radius: 4px; }
 
 /* ── Animations ────────────────────────────────────────────────────────────── */
@@ -111,15 +112,13 @@ body::before {
   border: 1px solid var(--border);
   transition: transform 0.35s cubic-bezier(.22,.61,.36,1),
               box-shadow 0.35s ease, border-color 0.3s ease;
-  /* Fix Safari/iOS: fuerza un recorte correcto del border-radius
-     cuando hay hijos con transform (evita que la imagen desaparezca). */
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   mask-image: radial-gradient(white, black);
 }
 .menu-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.7);
-  border-color: rgba(232,192,0,0.45);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+  border-color: rgba(217,168,24,0.4);
 }
 .menu-card:hover .card-img img {
   transform: scale(1.05);
@@ -128,7 +127,6 @@ body::before {
 .card-img {
   position: relative;
   overflow: hidden;
-  /* Capa propia estable en iOS Safari */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   isolation: isolate;
@@ -147,9 +145,12 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.12) 45%, transparent 70%);
+  background: linear-gradient(to top, rgba(8,8,8,0.94) 0%, rgba(8,8,8,0.12) 45%, transparent 70%);
   pointer-events: none;
 }
+
+/* Cursor zoom para lightbox */
+.cursor-zoom-in { cursor: zoom-in; }
 
 /* ── Category nav ──────────────────────────────────────────────────────────── */
 .cat-pill {
@@ -182,7 +183,7 @@ body::before {
 }
 .gold-rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(232,192,0,0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(217,168,24,0.5), transparent);
 }
 
 /* ── Price ─────────────────────────────────────────────────────────────────── */
@@ -195,7 +196,7 @@ body::before {
 /* ── Spinner ───────────────────────────────────────────────────────────────── */
 .spinner {
   width: 28px; height: 28px;
-  border: 2.5px solid #242424;
+  border: 2.5px solid #1a1a1a;
   border-top-color: var(--gold);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -203,6 +204,6 @@ body::before {
 
 /* ── Note banner ───────────────────────────────────────────────────────────── */
 .note-banner {
-  background: linear-gradient(135deg, rgba(232,192,0,0.09), rgba(232,192,0,0.03));
-  border: 1px solid rgba(232,192,0,0.22);
+  background: rgba(217,168,24,0.06);
+  border: 1px solid rgba(217,168,24,0.18);
 }
